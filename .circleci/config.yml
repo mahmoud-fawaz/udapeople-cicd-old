@@ -116,7 +116,6 @@ jobs:
     docker:
       - image: cimg/node:13.8.0
     steps:
-      steps:
       - checkout
       - restore_cache:
           keys: [backend-deps]
