@@ -94,10 +94,7 @@ jobs:
              cd backend
              npm install
              npm test
-      - save_cache:
-          paths: [backend/node_modules]
-          key: backend-deps
-            
+     
   scan-frontend:
     docker:
       - image: cimg/node:13.8.0
@@ -110,6 +107,7 @@ jobs:
           command: |
              cd frontend
              npm install
+             npm audit fix --force --audit-level=critical
              npm audit --audit-level=critical
 
   scan-backend:
@@ -124,6 +122,8 @@ jobs:
           command: |
              cd backend
              npm install
+             npm audit fix --force --audit-level=critical
+             npm audit fix --force --audit-level=critical
              npm audit --audit-level=critical
 
 #   deploy-infrastructure:
